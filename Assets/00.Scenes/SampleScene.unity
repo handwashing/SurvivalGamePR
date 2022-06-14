@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -34486,14 +34486,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216712866}
-  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -3.0900006, y: 0.425, z: 0.4509995}
-  m_LocalScale: {x: 0.1, y: 0.10000001, z: 0.10000002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1145034380}
-  m_Father: {fileID: 4299054390059250785}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_Father: {fileID: 806617493709175083}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1276500303
 GameObject:
   m_ObjectHideFlags: 0
@@ -64076,7 +64076,7 @@ Transform:
   m_LocalScale: {x: 100.00002, y: 100, z: 100.00002}
   m_Children: []
   m_Father: {fileID: 4299054390059250785}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &333512475273892750
 Transform:
@@ -64488,6 +64488,7 @@ Transform:
   m_LocalPosition: {x: 0.0026063907, y: 0.000052296517, z: 0.008574628}
   m_LocalScale: {x: 1, y: 0.9999999, z: 0.99999994}
   m_Children:
+  - {fileID: 1216712869}
   - {fileID: 6150707141886489514}
   m_Father: {fileID: 5123295798070306047}
   m_RootOrder: 0
@@ -64734,7 +64735,7 @@ Transform:
   m_LocalScale: {x: 100.00002, y: 100, z: 100.00002}
   m_Children: []
   m_Father: {fileID: 4299054390059250785}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1147027541696760116
 GameObject:
@@ -66693,7 +66694,8 @@ MonoBehaviour:
   carryBulletCount: 23
   retroActionForce: 0
   retroActionFineSightForce: 0
-  fineSightOriginPos: {x: 0, y: 0, z: 0}
+  fineSightOriginPos: {x: 0.55, y: 0.335, z: -0.586}
+  originPos: {x: 0, y: 0, z: 0}
   anim: {fileID: 3522553351577333468}
   muzzleFlash: {fileID: 1216712868}
   fire_Sound: {fileID: 8300000, guid: 0cee5ac768e07104d926ffa648478af9, type: 3}
@@ -67097,7 +67099,6 @@ Transform:
   m_Children:
   - {fileID: 5123295798070306047}
   - {fileID: 1416358638167626908}
-  - {fileID: 1216712869}
   - {fileID: 1141919390525927172}
   - {fileID: 326639498567191079}
   m_Father: {fileID: 1848827199}
@@ -67833,6 +67834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGun: {fileID: 3522553351577333470}
+  originPos: {x: 0, y: 0, z: 0}
 --- !u!82 &5266737490546366855
 AudioSource:
   m_ObjectHideFlags: 0
@@ -68398,7 +68400,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 806617493709175083}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6169852178400649138
 Transform:

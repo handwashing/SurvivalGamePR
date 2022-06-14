@@ -121,8 +121,41 @@ public class GunController : MonoBehaviour
 
     private void FineSight()
     {
-        isFineSightMode = !isFineSightMode; //위의 FineSigh가 실행될 때마다 알아서 true,false로 바뀌게 함...
-        
+        isFineSightMode = !isFineSightMode; //위의 FineSigh가 실행될 때마다 알아서 true,false로 바뀌게 함... / 처음에는 false이니 true로 바꿔짐...
+        currentGun.anim.SetBool("FineSightMode", isFineSightMode);
+    
+        //정조준인지 아닌지 구분
+        if (isFineSightMode)
+        {   
+            StopAllCoroutines();
+            StartCoroutine(FineSightActivateCoroutine());
+        }
+        else
+        {
+            StopAllCoroutines();
+            StartCoroutine(FineSightDeactivateCoroutine());
+        }
+    }
+
+    //정조준 가동
+    IEnumerator FineSightActivateCoroutine()
+    {//총의 현재 위치가 정조준 위치가 될 때까지 반복 / 화면 가운데로 총이 올떄까지...
+        while(currentGun.transform.localPosition != currentGun.fineSightOriginPos)
+        {   //0.2f 의 세기로 현재 위치에서 정조준 위치로...
+            currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, currentGun.fineSightOriginPos, 0.2f);
+            yield return null; //1 frame 대기
+        }
+
+    }
+
+    IEnumerator FineSightDeactivateCoroutine()
+    {//정조준을 취소하면 원래의 값으로 돌아갈 때까지 (Lerp돌리기...)반복
+        while (currentGun.transform.localPosition != originPos)
+        {   //0.2f 의 세기로 현재 위치에서 정조준 위치로...
+            currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, currentGun.originPos, 0.2f);
+            yield return null; //1 frame 대기
+        }
+
     }
 
     private void PlaySE(AudioClip _clip) //총 사운드 재생
