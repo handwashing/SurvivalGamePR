@@ -63,6 +63,8 @@ public class GunController : MonoBehaviour
         currentFireRate = currentGun.fireRate; //발사 후 연사속도 재계산
         PlaySE(currentGun.fire_Sound);
         currentGun.muzzleFlash.Play();
+
+        //총기 반동 코루틴 실행
         Debug.Log("총알 발사함");
     }
 
@@ -152,12 +154,32 @@ public class GunController : MonoBehaviour
     {//정조준을 취소하면 원래의 값으로 돌아갈 때까지 (Lerp돌리기...)반복
         while (currentGun.transform.localPosition != originPos)
         {   //0.2f 의 세기로 현재 위치에서 정조준 위치로...
-            currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, currentGun.originPos, 0.2f);
+            currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, originPos, 0.2f);
             yield return null; //1 frame 대기
         }
 
     }
 
+    IEnumerator RetroActionCoroutine()
+    {
+        Vector3 recoilBack = new Vector3(currentGun.retroActionForce, originPos.y, originPos.z); //정조준 안 했을때 최대 반동
+        Vector3 retroActionRecoilBack = new Vector3(currentGun.retroActionFineSightForce, currentGun.fineSightOriginPos.y, currentGun.fineSightOriginPos.z); //정조준 했을때 최대 반동
+
+        if (!isFineSightMode)
+        {
+             currentGun.transform.localPosition = originPos; //currentGun의 위치를 원래 포지션으로(반동의 중복을 멈추려고)
+
+            //반동 시작
+            while(currentGun.transform.localPosition.x <= currentGun.retroActionForce)
+            {
+                currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, recoilBack, 0.4f);
+            }
+        }
+        else
+        {
+           
+        }
+    }
     private void PlaySE(AudioClip _clip) //총 사운드 재생
         {
             audioSource.clip = _clip;
